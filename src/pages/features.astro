@@ -1,0 +1,111 @@
+---
+import Base from '../layouts/Base.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import Icon from '../components/Icon.astro';
+import { site, features, trades } from '../data/site';
+
+const title = `Features — ${site.name}`;
+const description =
+  'Everything Stock4 does: barcode stock takes, live stock levels, ordering from stock takes, supplier price comparison and history, stock requests, van checks, tool loans, reporting, roles and notifications — on web and mobile.';
+---
+
+<Base title={title} description={description}>
+  <!-- ============ HERO ============ -->
+  <section class="border-b border-ink-200">
+    <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-16 md:py-20">
+      <p class="text-sm font-medium uppercase tracking-wider text-brand-600">Features</p>
+      <h1 class="display mt-3 text-4xl md:text-5xl text-brand-950 max-w-3xl">
+        One stock system, every job on the list.
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-ink-600 leading-relaxed">
+        Stock4 covers the whole loop — counting, ordering, pricing and control — for the office, the
+        store and the van. Built for all trades.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE GRID ============ -->
+  <section class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-16 md:py-20">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {features.map((f) => <FeatureCard feature={f} />)}
+    </div>
+  </section>
+
+  <!-- ============ STOCK TAKE → ORDER DEEP DIVE ============ -->
+  <section class="border-t border-ink-200 bg-ink-50">
+    <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-16 md:py-20 grid gap-12 lg:grid-cols-2">
+      <div>
+        <p class="text-sm font-medium uppercase tracking-wider text-brand-600">From count to order</p>
+        <h2 class="display mt-3 text-3xl md:text-4xl text-brand-950">Stop counting on paper.</h2>
+        <p class="mt-4 text-ink-600 leading-relaxed">
+          Run a stock take by scanning barcodes with the phone camera or entering quantities by hand.
+          The moment a count comes in low, Stock4 turns it into an order for the supplier with the best
+          price you have on file — no re-keying, no spreadsheet in the middle.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {['Barcode and quick-entry stock takes', 'Order straight from a stock take', 'Best-price supplier chosen from your pricing', 'Full stock-take history you can audit'].map((t) => (
+            <li class="flex items-start gap-3 text-ink-700">
+              <span class="mt-0.5 text-brand-700"><Icon name="check-circle" class="h-5 w-5" /></span>
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="text-sm font-medium uppercase tracking-wider text-brand-600">Know your costs</p>
+        <h2 class="display mt-3 text-3xl md:text-4xl text-brand-950">Compare every supplier.</h2>
+        <p class="mt-4 text-ink-600 leading-relaxed">
+          Hold the same product against several suppliers and Stock4 lines their prices up side by
+          side. Price history shows how each one has moved over time, so you spot creeping costs and
+          reorder at the right number every time.
+        </p>
+        <ul class="mt-6 space-y-3">
+          {['Multiple suppliers per product', 'Side-by-side price comparison', 'Price history and pricing matrix', 'Pricing requests out to suppliers'].map((t) => (
+            <li class="flex items-start gap-3 text-ink-700">
+              <span class="mt-0.5 text-brand-700"><Icon name="check-circle" class="h-5 w-5" /></span>
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AVAILABLE FOR EVERY TRADE ============ -->
+  <section class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-16 md:py-20">
+    <p class="text-sm font-medium uppercase tracking-wider text-brand-600">Available for every trade</p>
+    <h2 class="display mt-3 text-3xl md:text-4xl text-brand-950">Same features. Your trade’s app.</h2>
+    <p class="mt-4 max-w-2xl text-ink-600 leading-relaxed">
+      Choose the app that matches your trade. Each is a separate download with its own branding — the
+      feature set on this page is identical across all four.
+    </p>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {trades.map((t) => (
+        <a
+          href={t.webUrl}
+          class="group flex items-center gap-3 rounded-2xl border border-ink-200 bg-white p-4 hover:-translate-y-0.5 hover:shadow-lg transition-all"
+        >
+          <span class="size-3 shrink-0 rounded-full" style={`background:${t.accent}`}></span>
+          <img src={t.icon} alt={`${t.name} app icon`} width="40" height="40" class="h-10 w-10 rounded-lg shadow-sm" loading="lazy" />
+          <div class="min-w-0">
+            <p class="truncate text-sm font-semibold text-ink-900">{t.name}</p>
+            <p class="text-xs text-ink-500 group-hover:text-brand-700">Open app &rarr;</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 pb-16">
+    <div class="rounded-3xl border border-ink-200 bg-brand-50 p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div>
+        <h2 class="display text-2xl md:text-3xl text-brand-950">See it on your own stock.</h2>
+        <p class="mt-2 text-ink-600">We’ll set up a demo with your trade, your suppliers, your stock.</p>
+      </div>
+      <a href="/contact/" class="shrink-0 rounded-xl bg-brand-800 px-6 py-3 font-semibold text-white hover:bg-brand-900 transition-colors">
+        Get a demo &rarr;
+      </a>
+    </div>
+  </section>
+</Base>

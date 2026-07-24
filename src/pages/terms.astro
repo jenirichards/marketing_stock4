@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+const title = `Terms of Service — ${site.name}`;
+const description =
+  'The terms that govern your use of Stock4, the stock-control service operated by iCentric Systems Ltd.';
+
+// Bump this whenever the wording below is materially changed.
+const effectiveDate = '16 July 2026';
+const contactEmail = site.email;
+---
+
+<Base title={title} description={description}>
+  <section class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8">
+      <header class="mb-8">
+        <h1 class="display text-3xl md:text-4xl text-brand-950 m-0">Terms of Service</h1>
+        <p class="text-sm text-ink-500 mt-3 m-0">Effective {effectiveDate}</p>
+      </header>
+
+      <div class="flex flex-col gap-10 text-ink-700 leading-relaxed">
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-semibold text-ink-900 m-0">1. Acceptance</h2>
+          <p class="m-0">
+            By creating an account or using Stock4 (the “Service”), you agree to these Terms of
+            Service (“Terms”). If you do not agree, do not use the Service. The Service is provided
+            by {site.company}, trading as {site.studio} (“we”, “us”, “Stock4”).
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-semibold text-ink-900 m-0">2. Your account</h2>
+          <p class="m-0">
+            Stock4 accounts are held by a company, which may invite users and assign them access
+            roles. You are responsible for keeping your credentials safe and for activity under your
+            account, and your company is responsible for managing its users’ access. Let us know
+            promptly if you suspect unauthorised access. You must be at least 18 years old to use the
+            Service.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-semibold text-ink-900 m-0">3. Subscription &amp; billing</h2>
+          <p class="m-0">
+            The Service is offered on a one-off setup fee plus a monthly subscription and a per-user
+            charge, across the tiers shown on our pricing page. Paid subscriptions are billed monthly
+            via our payment processor, Stripe, until cancelled. Indicative pricing shown before or at
+            sign-up may change; we will give existing subscribers at least 30 days’ notice of any
+            price change.
+          </p>
+          <p class="m-0">
+            Cancellations take effect at the end of the current billing period. We don’t refund
+            unused portions of a paid period except where required by law.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-semibold text-ink-900 m-0">4. Acceptable use</h2>
+          <p class="m-0">
+            Don’t use Stock4 to break the law, infringe others’ rights, store content you don’t have
+            the right to store, or interfere with the operation of the Service (including by reverse
+            engineering, scraping at unreasonable volumes, or attempting to bypass billing). We may
+            suspend or terminate accounts that do.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-semibold text-ink-900 m-0">5. Your content &amp; data</h2>
+          <p class="m-0">
+            You retain ownership of everything you put into Stock4 — stock items, stock takes,
+            orders, suppliers, pricing and related records. You grant us the permissions needed to
+            store and display it back to you and the users you invite into your account. See our
+            <a href="/privacy/" class="text-brand-700 hover:underline">Privacy Policy</a>
+            for how we handle personal data.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-semibold text-ink-900 m-0">6. Intellectual property</h2>
+          <p class="m-0">
+            The Stock4 software, brands (including the Glazing, Building, Plumbing and Electrics trade
+            apps), design and documentation are owned by {site.company} and protected by copyright
+            and trademark law. These Terms don’t transfer any of that to you; they only let you use
+            the Service.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-semibold text-ink-900 m-0">7. Liability</h2>
+          <p class="m-0">
+            The Service is provided “as is”. To the extent permitted by law, we exclude implied
+            warranties, and our total liability for any claim arising from the Service is limited to
+            the amount you paid us in the 12 months before the claim arose. Nothing in these Terms
+            limits liability for death, personal injury or fraud.
+          </p>
+          <p class="m-0">
+            Stock4 is a stock-management tool. While we work to keep it accurate, we make no warranty
+            that stock levels, pricing or ordering figures generated by the Service are correct for
+            any specific purpose — verify critical figures before acting on them.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-semibold text-ink-900 m-0">8. Termination</h2>
+          <p class="m-0">
+            You may cancel and close your account at any time by contacting us; doing so wipes your
+            data on our side except where retention is required by law (e.g. tax records). We may
+            terminate or suspend access for breach of these Terms or where we are required to do so
+            by law.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-semibold text-ink-900 m-0">9. Changes to these Terms</h2>
+          <p class="m-0">
+            We may update these Terms occasionally. Material changes will be flagged in-app or by
+            email; the “Effective” date at the top of this page tracks the current version.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-semibold text-ink-900 m-0">10. Governing law &amp; contact</h2>
+          <p class="m-0">
+            These Terms are governed by the laws of England and Wales, and the courts of England and
+            Wales have exclusive jurisdiction over any dispute.
+          </p>
+          <p class="m-0">
+            Questions about these Terms?
+            <a href={`mailto:${contactEmail}`} class="text-brand-700 hover:underline">{contactEmail}</a>
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</Base>

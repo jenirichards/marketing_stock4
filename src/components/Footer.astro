@@ -1,0 +1,47 @@
+---
+import { site, nav, trades } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-ink-200 bg-ink-50 mt-24">
+  <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-4 text-sm text-ink-600">
+    <div class="md:col-span-2">
+      <img src="/logos/stock4-logo.svg" alt="Stock4" class="h-9 w-auto" />
+      <p class="mt-4 text-ink-500 max-w-sm leading-relaxed">
+        Stock takes, ordering and stock control in one place — one platform, four trade apps
+        for glazing, building, plumbing and electrical firms. Web portal and mobile, in sync.
+      </p>
+      <a href="/contact/" class="mt-4 inline-block text-brand-800 font-medium hover:underline">
+        Get a demo &rarr;
+      </a>
+    </div>
+    <div>
+      <p class="font-semibold text-ink-900">Trade</p>
+      <ul class="mt-3 space-y-1.5">
+        {trades.map((t) => (
+          <li><a href={`/${t.slug}/`} class="hover:text-brand-700">{t.navLabel}</a></li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold text-ink-900">Company</p>
+      <ul class="mt-3 space-y-1.5">
+        {nav.filter((l) => l.href).map((l) => (
+          <li><a href={l.href} class="hover:text-brand-700">{l.label}</a></li>
+        ))}
+        <li><a href={`mailto:${site.email}`} class="hover:text-brand-700">{site.email}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-ink-200">
+    <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs text-ink-500">
+      <p class="m-0">
+        &copy; {year} {site.company}. Stock4 is a product of {site.company} (trading as {site.studio}).
+      </p>
+      <ul class="flex items-center gap-4">
+        <li><a href="/privacy/" class="hover:text-brand-700">Privacy</a></li>
+        <li><a href="/terms/" class="hover:text-brand-700">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

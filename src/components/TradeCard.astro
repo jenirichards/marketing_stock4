@@ -1,0 +1,45 @@
+---
+import type { Trade } from '../data/site';
+type Props = { trade: Trade };
+const { trade } = Astro.props;
+---
+
+<a
+  href={trade.webUrl}
+  class="group relative flex flex-col overflow-hidden rounded-2xl border border-ink-200 bg-white transition-all hover:-translate-y-0.5 hover:shadow-xl"
+  style={`--hero-from: ${trade.heroFrom}; --hero-to: ${trade.heroTo}; --on-accent: ${trade.onAccent}; --accent-text: ${trade.accentText}`}
+>
+  <!-- Coloured brand band -->
+  <div
+    class="relative h-24 w-full"
+    style="background-image: linear-gradient(135deg, var(--hero-from), var(--hero-to))"
+  >
+    <div class="absolute bottom-4 left-5 flex items-center gap-3">
+      <img
+        src={trade.icon}
+        alt={`${trade.name} app icon`}
+        width="48"
+        height="48"
+        class="h-12 w-12 rounded-xl ring-1 ring-black/10 shadow-md"
+        loading="lazy"
+      />
+      <span
+        class="rounded-full bg-white/20 px-2.5 py-1 text-xs font-medium backdrop-blur"
+        style="color: var(--on-accent)"
+      >
+        iOS · Android · Web
+      </span>
+    </div>
+  </div>
+
+  <div class="flex flex-1 flex-col p-5">
+    <h3 class="text-lg font-semibold text-ink-900">{trade.name}</h3>
+    <p class="mt-2 flex-1 text-sm text-ink-600 leading-relaxed">{trade.blurb}</p>
+    <span
+      class="mt-4 inline-flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all"
+      style="color: var(--accent-text)"
+    >
+      Open {trade.trade} app &rarr;
+    </span>
+  </div>
+</a>

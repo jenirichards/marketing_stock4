@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand · Stock4 master (slate) --------------------------------- */
+  /* The master brand is deliberately neutral so it reads as the platform,
+     not one trade. Each trade (glazing/building/plumbing/electrics) supplies
+     its own vivid accent — applied inline from data/site.ts. Seeds mirror the
+     stock brand registry (packages/core/src/theme/brands.ts: stock4 = slate). */
+  --color-brand-50:  #f8fafc;
+  --color-brand-100: #f1f5f9;
+  --color-brand-200: #e2e8f0;
+  --color-brand-300: #cbd5e1;
+  --color-brand-400: #94a3b8;
+  --color-brand-500: #64748b;
+  --color-brand-600: #475569;
+  --color-brand-700: #334155;
+  --color-brand-800: #1e293b;
+  --color-brand-900: #0f172a;
+  --color-brand-950: #020617;
+
+  /* Ink · warm neutrals (shared with the studio + fitness sites) --- */
+  --color-ink-50:  #fafafa;
+  --color-ink-100: #f4f4f5;
+  --color-ink-200: #e4e4e7;
+  --color-ink-300: #d4d4d8;
+  --color-ink-400: #a1a1aa;
+  --color-ink-500: #71717a;
+  --color-ink-600: #52525b;
+  --color-ink-700: #3f3f46;
+  --color-ink-800: #27272a;
+  --color-ink-900: #18181b;
+  --color-ink-950: #09090b;
+
+  /* Trade accents — one per app. Also declared inline in data/site.ts so
+     cards and per-trade sections can theme themselves dynamically. */
+  --color-glazing:   #0369a1; /* sky */
+  --color-building:  #c2410c; /* orange */
+  --color-plumbing:  #0e9085; /* teal */
+  --color-electrics: #d89b0a; /* gold */
+
+  --font-sans: "Geist", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Display headings — tighter tracking, optical sizing ----------- */
+.display {
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  font-weight: 700;
+}

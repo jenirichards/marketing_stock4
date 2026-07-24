@@ -1,0 +1,236 @@
+---
+import Base from '../layouts/Base.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import Icon from '../components/Icon.astro';
+import { trades, features, site, type Trade } from '../data/site';
+
+export function getStaticPaths() {
+  return trades.map((trade) => ({
+    params: { trade: trade.slug },
+    props: { trade },
+  }));
+}
+
+type Props = { trade: Trade };
+const { trade } = Astro.props;
+
+const title = `${trade.name} — Stock control for ${trade.navLabel.toLowerCase()}`;
+const description = trade.blurb;
+
+const siteUrl = Astro.site?.href ?? site.url;
+const pageUrl = new URL(`/${trade.slug}/`, siteUrl).href;
+
+// Show a focused subset of features on the trade page; the full set lives on
+// /features/. Easy to tailor per trade as these pages grow.
+const tradeFeatures = features.slice(0, 6);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: trade.name,
+  description,
+  url: pageUrl,
+  image: new URL(trade.icon, siteUrl).href,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'iOS, Android, Web',
+  downloadUrl: [trade.appStore, trade.playStore].filter(Boolean),
+  publisher: {
+    '@type': 'Organization',
+    name: site.studio,
+    alternateName: site.company,
+    url: siteUrl,
+  },
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: trade.navLabel, item: pageUrl },
+  ],
+};
+---
+
+<Base title={title} description={description}>
+  <!-- ============ HERO ============ -->
+  <section
+    class="relative overflow-hidden"
+    style={`background-image: linear-gradient(135deg, ${trade.heroFrom}, ${trade.heroTo}); color: ${trade.onAccent}`}
+  >
+    <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-14 md:py-20">
+      <nav aria-label="Breadcrumb" class="text-sm opacity-70">
+        <ol class="flex items-center gap-2 flex-wrap">
+          <li><a href="/" class="hover:opacity-100 transition-opacity">Home</a></li>
+          <li aria-hidden="true" class="opacity-60">/</li>
+          <li><span class="font-medium opacity-100" aria-current="page">{trade.navLabel}</span></li>
+        </ol>
+      </nav>
+
+      <div class="mt-8 flex items-start gap-5">
+        <img
+          src={trade.icon}
+          alt={`${trade.name} app icon`}
+          width="72"
+          height="72"
+          class="h-16 w-16 md:h-18 md:w-18 rounded-2xl ring-1 ring-black/10 shadow-lg"
+        />
+        <div class="min-w-0">
+          <p class="text-sm font-medium uppercase tracking-wider opacity-80">
+            Stock4 for {trade.navLabel}
+          </p>
+          <h1 class="display mt-2 text-4xl sm:text-5xl">{trade.name}</h1>
+        </div>
+      </div>
+
+      <p class="mt-6 max-w-2xl text-lg opacity-90 leading-relaxed">{trade.blurb}</p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a
+          href={trade.webUrl}
+          class="rounded-xl bg-white px-5 py-3 font-semibold shadow-sm hover:bg-white/90 transition-colors"
+          style={`color: ${trade.accentText}`}
+        >
+          Open the {trade.trade} app &rarr;
+        </a>
+        <a
+          href="/contact/"
+          class="rounded-xl border px-5 py-3 font-medium transition-colors hover:bg-black/5"
+          style="border-color: color-mix(in srgb, currentColor 40%, transparent)"
+        >
+          Get a demo
+        </a>
+        <span
+          class="rounded-full bg-white/20 px-3 py-1 text-sm font-medium backdrop-blur"
+        >
+          iOS · Android · Web
+        </span>
+      </div>
+
+      {(trade.appStore || trade.playStore) && (
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          {trade.appStore && (
+            <a
+              href={trade.appStore}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 rounded-xl bg-black/85 px-4 py-2.5 text-sm font-semibold text-white ring-1 ring-white/25 hover:bg-black transition-colors"
+            >
+              Download on the App Store
+            </a>
+          )}
+          {trade.playStore && (
+            <a
+              href={trade.playStore}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 rounded-xl bg-black/85 px-4 py-2.5 text-sm font-semibold text-white ring-1 ring-white/25 hover:bg-black transition-colors"
+            >
+              Get it on Google Play
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- ============ INTRO ============ -->
+  <section class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-16 md:py-20">
+    <div class="max-w-3xl">
+      <p class="text-sm font-medium uppercase tracking-wider" style={`color: ${trade.accentText}`}>
+        Built for your trade
+      </p>
+      <h2 class="display mt-3 text-3xl md:text-4xl text-brand-950">
+        Stock control that speaks {trade.navLabel.toLowerCase()}.
+      </h2>
+      <p class="mt-4 text-ink-600 leading-relaxed">
+        {trade.name} is the Stock4 platform tuned for {trade.navLabel.toLowerCase()} firms — the same
+        stock takes, ordering, supplier pricing and van control that run the whole business, wearing
+        your trade’s name and colours. Your team downloads the {trade.trade} app; managers run it all
+        from the web portal.
+      </p>
+      <p class="mt-4 text-ink-500 leading-relaxed">
+        This page will grow as we roll out {trade.navLabel.toLowerCase()}-specific workflows,
+        screenshots and case studies. In the meantime, book a demo and we’ll walk you through it on
+        your own stock.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="border-t border-ink-200 bg-ink-50">
+    <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-16 md:py-20">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="text-sm font-medium uppercase tracking-wider" style={`color: ${trade.accentText}`}>
+            What you get
+          </p>
+          <h2 class="display mt-3 text-3xl md:text-4xl text-brand-950">
+            Everything in {trade.name}.
+          </h2>
+        </div>
+        <a href="/features/" class="inline-flex text-sm font-medium text-brand-700 hover:underline">
+          See every feature &rarr;
+        </a>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {tradeFeatures.map((f) => <FeatureCard feature={f} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OTHER TRADES ============ -->
+  <section class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 py-16 md:py-20">
+    <p class="text-sm font-medium uppercase tracking-wider text-brand-600">Not your trade?</p>
+    <h2 class="display mt-3 text-3xl md:text-4xl text-brand-950">Stock4 for every trade.</h2>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {trades.map((t) => (
+        <a
+          href={`/${t.slug}/`}
+          class={`group flex items-center gap-3 rounded-2xl border p-4 transition-all hover:-translate-y-0.5 hover:shadow-lg ${t.slug === trade.slug ? 'border-ink-300 bg-ink-50' : 'border-ink-200 bg-white'}`}
+        >
+          <span class="size-3 shrink-0 rounded-full" style={`background:${t.accent}`}></span>
+          <img src={t.icon} alt={`${t.name} app icon`} width="40" height="40" class="h-10 w-10 rounded-lg shadow-sm" loading="lazy" />
+          <div class="min-w-0">
+            <p class="truncate text-sm font-semibold text-ink-900">{t.navLabel}</p>
+            <p class="text-xs text-ink-500 group-hover:text-brand-700">
+              {t.slug === trade.slug ? 'You’re here' : 'View →'}
+            </p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ============ CTA BAND ============ -->
+  <section class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 pb-16">
+    <div
+      class="relative overflow-hidden rounded-3xl p-8 md:p-14"
+      style={`background-image: linear-gradient(135deg, ${trade.heroFrom}, ${trade.heroTo}); color: ${trade.onAccent}`}
+    >
+      <div class="relative max-w-2xl">
+        <p class="text-sm font-medium uppercase tracking-wider opacity-80">Get started</p>
+        <h2 class="display mt-3 text-3xl md:text-4xl">Put {trade.name} to work.</h2>
+        <p class="mt-4 opacity-90 leading-relaxed">
+          Tell us about your team and we’ll set up {trade.name} with your suppliers and stock loaded,
+          ready to run your first stock take.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/contact/" class="inline-block rounded-xl bg-white px-5 py-3 font-semibold hover:bg-white/90 transition-colors" style={`color: ${trade.accentText}`}>
+            Get a demo &rarr;
+          </a>
+          <a
+            href={trade.webUrl}
+            class="inline-block rounded-xl border px-5 py-3 font-medium transition-colors hover:bg-black/5"
+            style="border-color: color-mix(in srgb, currentColor 40%, transparent)"
+          >
+            Open the {trade.trade} app
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+</Base>

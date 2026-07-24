@@ -1,0 +1,175 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+const title = `Privacy Policy — ${site.name}`;
+const description =
+  'What personal data the Stock4 apps and website collect, how it is used, and your rights.';
+
+// The date the current wording took effect. Bump this whenever the policy text
+// below is materially changed. Kept in step with the app store policy
+// (ice/workflow apps/mobile/store/PRIVACY_POLICY.md).
+const effectiveDate = '14 July 2026';
+const privacyEmail = site.email;
+---
+
+<Base title={title} description={description}>
+  <section class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8">
+      <header class="mb-10">
+        <h1 class="display text-3xl md:text-4xl text-brand-950 m-0">Privacy Policy</h1>
+        <p class="text-sm text-ink-500 mt-3 m-0">Last updated {effectiveDate}</p>
+      </header>
+
+      <div class="flex flex-col gap-10 text-ink-700 leading-relaxed">
+        <section class="flex flex-col gap-3">
+          <p class="m-0">
+            This policy explains what personal data the <strong>Stock4</strong> apps and website
+            collect, how it is used, and your rights. It covers this website and the Stock4 trade
+            apps — Stock4 Glazing, Stock4 Building, Stock4 Plumbing and Stock4 Electrics (together,
+            the “Service”).
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-bold text-ink-900 m-0">Who we are</h2>
+          <p class="m-0">
+            Stock4 is a stock-management tool provided to staff of businesses that use the Stock4
+            system. <strong>Your employer — the business that gave you access — is the data
+            controller</strong> for your personal data. The software is built and operated on their
+            behalf by <strong>{site.company}</strong> (trading as {site.studio}) as
+            <strong>data processor</strong>.
+          </p>
+          <p class="m-0">
+            Contact for any privacy question or request:
+            <a href={`mailto:${privacyEmail}`} class="text-brand-700 font-semibold hover:underline">{privacyEmail}</a>.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-bold text-ink-900 m-0">What we collect</h2>
+          <p class="m-0">We only collect what the Service needs to work:</p>
+          <ul class="flex flex-col gap-2 m-0 pl-5 list-disc">
+            <li>
+              <strong>Account details</strong> — your first name, last name and email address, and a
+              securely hashed password, so you can sign in and your actions are attributed to you.
+            </li>
+            <li>
+              <strong>Work data you enter</strong> — the stock information you record: stock counts
+              and stock takes, van stock checks, tool check-in/out and any comments or flags, stock
+              requests, and similar business records.
+            </li>
+            <li>
+              <strong>Technical data</strong> — a sign-in session token held on your device, and your
+              app version, so the Service functions and we can support you.
+            </li>
+          </ul>
+          <p class="m-0">
+            We do <strong>not</strong> collect location, contacts, photos, advertising identifiers, or
+            any data for advertising or cross-app tracking.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-bold text-ink-900 m-0">Demo mode</h2>
+          <p class="m-0">
+            If you tap “Try the demo” on the welcome screen, the app runs on local sample data only.
+            Nothing you do in the demo is sent to us or saved to an account.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-bold text-ink-900 m-0">Face ID / Touch ID</h2>
+          <p class="m-0">
+            If you turn on quick sign-in, your login is stored in your device’s secure
+            Keychain/Keystore and unlocked by Face ID / Touch ID. Your biometric data never leaves
+            your device and is never seen or collected by us.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-bold text-ink-900 m-0">How we use your data</h2>
+          <ul class="flex flex-col gap-2 m-0 pl-5 list-disc">
+            <li>
+              To provide the Service: sign you in, record your stock actions, and show your
+              business’s stock information.
+            </li>
+            <li>To keep your account secure and to support you if you contact us.</li>
+          </ul>
+          <p class="m-0">
+            <strong>Legal bases (UK GDPR):</strong> performance of the contract between you/your
+            employer and us, and our legitimate interest in running the Service securely.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-bold text-ink-900 m-0">Sharing and storage</h2>
+          <ul class="flex flex-col gap-2 m-0 pl-5 list-disc">
+            <li>We do <strong>not</strong> sell your data or share it for advertising.</li>
+            <li>
+              Your data is stored on secure UK/EU-region cloud infrastructure and encrypted in
+              transit.
+            </li>
+            <li>
+              We use trusted processors only to run the Service (e.g. cloud hosting and transactional
+              email). They act on our instructions and may not use your data for their own purposes.
+            </li>
+            <li>
+              Your work data is visible within your own business’s account only; it is not shared
+              with other businesses that use Stock4.
+            </li>
+          </ul>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-bold text-ink-900 m-0">Retention and deletion</h2>
+          <p class="m-0">
+            We keep your data for as long as your account is active with your employer’s Stock4
+            service. You can ask us to delete your account and its personal data at any time — contact
+            your employer’s administrator or email
+            <a href={`mailto:${privacyEmail}`} class="text-brand-700 font-semibold hover:underline">{privacyEmail}</a>.
+            We will delete your personal data promptly, unless we must retain limited records to meet
+            a legal obligation.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-bold text-ink-900 m-0">Your rights</h2>
+          <p class="m-0">
+            Under UK GDPR you have the right to access, correct, delete, restrict, or object to our
+            use of your personal data, and to data portability. To exercise any of these, email
+            <a href={`mailto:${privacyEmail}`} class="text-brand-700 font-semibold hover:underline">{privacyEmail}</a>.
+            You also have the right to complain to the UK Information Commissioner’s Office
+            (<a href="https://ico.org.uk" target="_blank" rel="noopener" class="text-brand-700 font-semibold hover:underline">ico.org.uk</a>).
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-bold text-ink-900 m-0">Cookies</h2>
+          <p class="m-0">
+            On this website we use only essential cookies needed to sign you in and keep your session
+            secure. We do not use cookies for advertising or cross-site tracking.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-bold text-ink-900 m-0">Children</h2>
+          <p class="m-0">
+            The Service is a workplace tool intended for adults and is not directed at children.
+          </p>
+        </section>
+
+        <section class="flex flex-col gap-3">
+          <h2 class="text-xl md:text-2xl font-bold text-ink-900 m-0">Changes</h2>
+          <p class="m-0">
+            We may update this policy; the “Last updated” date above will change and, where
+            appropriate, we’ll let you know in the app or by email.
+          </p>
+          <p class="m-0 text-sm text-ink-500">
+            Stock4 is a product of {site.studio}, trading name of {site.company}.
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</Base>

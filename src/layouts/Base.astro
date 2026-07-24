@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+type Props = {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  /** Set to true on pages that shouldn't be indexed (e.g. 404). */
+  noindex?: boolean;
+};
+
+const { title, description, canonical, ogImage = '/og-default.png', noindex = false } = Astro.props;
+
+// Normalise the path to end with `/` so the canonical URL matches what the host
+// actually serves (Astro static build outputs `/<page>/index.html`).
+const rawPath = Astro.url.pathname;
+const normalisedPath = rawPath.endsWith('/') ? rawPath : `${rawPath}/`;
+const canonicalUrl = canonical ?? new URL(normalisedPath, Astro.site).href;
+
+const siteName = 'Stock4';
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteName,
+  url: Astro.site?.href ?? 'https://stock4.co.uk',
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="author" content="iCentric Systems Ltd" />
+    <meta
+      name="robots"
+      content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+    />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
+  </head>
+  <body class="bg-white text-ink-900 antialiased overflow-x-hidden">
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stock4.co.uk/sitemap-index.xml

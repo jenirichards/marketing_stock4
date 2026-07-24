@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { trades } from '../data/site';
+
+const title = 'Page not found — Stock4';
+const description = 'The page you were looking for could not be found.';
+---
+
+<Base title={title} description={description} noindex={true}>
+  <section class="mx-auto max-w-3xl px-5 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
+    <p class="text-sm font-medium uppercase tracking-wider text-brand-600">404</p>
+    <h1 class="display mt-3 text-4xl md:text-5xl text-brand-950">We couldn’t find that page.</h1>
+    <p class="mt-5 text-lg text-ink-600">
+      The link may be broken or the page may have moved. Try one of these instead.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="/" class="rounded-xl bg-brand-800 px-5 py-3 font-medium text-white hover:bg-brand-900 transition-colors">
+        Home
+      </a>
+      <a href="/features/" class="rounded-xl border border-ink-300 bg-white px-5 py-3 font-medium text-ink-800 hover:border-brand-400 hover:text-brand-700 transition-colors">
+        Features
+      </a>
+      <a href="/pricing/" class="rounded-xl border border-ink-300 bg-white px-5 py-3 font-medium text-ink-800 hover:border-brand-400 hover:text-brand-700 transition-colors">
+        Pricing
+      </a>
+    </div>
+    <div class="mt-10 flex flex-wrap justify-center gap-2 text-sm">
+      {trades.map((t) => (
+        <a href={t.webUrl} class="inline-flex items-center gap-1.5 rounded-full border border-ink-200 bg-white px-3 py-1 font-medium text-ink-700 hover:border-brand-300">
+          <span class="size-2.5 rounded-full" style={`background:${t.accent}`}></span>
+          {t.trade}
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
