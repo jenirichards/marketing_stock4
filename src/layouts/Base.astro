@@ -21,11 +21,27 @@ const normalisedPath = rawPath.endsWith('/') ? rawPath : `${rawPath}/`;
 const canonicalUrl = canonical ?? new URL(normalisedPath, Astro.site).href;
 
 const siteName = 'Stock4';
+const siteHref = Astro.site?.href ?? 'https://stock4.co.uk';
 const websiteLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: siteName,
-  url: Astro.site?.href ?? 'https://stock4.co.uk',
+  alternateName: 'Stock4 stock control',
+  url: siteHref,
+  publisher: { '@type': 'Organization', name: 'iCentric Systems Ltd' },
+};
+
+// Site-wide company entity, so every page carries a consistent brand/publisher
+// signal (Stock4 is a product of iCentric Systems Ltd / Harbour SW Development).
+const organizationLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Stock4',
+  legalName: 'iCentric Systems Ltd',
+  url: siteHref,
+  logo: new URL('/logos/stock4-logo.svg', siteHref).href,
+  email: 'support@icentricsystems.com',
+  address: { '@type': 'PostalAddress', addressCountry: 'GB' },
 };
 ---
 
@@ -34,6 +50,15 @@ const websiteLd = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Analytics 4 (Stock4 web stream: G-XW39YQ4MHK) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XW39YQ4MHK"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-XW39YQ4MHK');
+    </script>
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalUrl} />
@@ -65,15 +90,18 @@ const websiteLd = {
     <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${siteName} — ${title}`} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, Astro.site).href} />
+    <meta name="twitter:image:alt" content={`${siteName} — ${title}`} />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationLd)} />
   </head>
   <body class="bg-white text-ink-900 antialiased overflow-x-hidden">
     <Nav />

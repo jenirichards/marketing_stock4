@@ -14,7 +14,7 @@ export function getStaticPaths() {
 type Props = { trade: Trade };
 const { trade } = Astro.props;
 
-const title = `${trade.name} — Stock control for ${trade.navLabel.toLowerCase()}`;
+const title = `${trade.name} - Stock control for ${trade.navLabel.toLowerCase()}`;
 const description = trade.blurb;
 
 const siteUrl = Astro.site?.href ?? site.url;
@@ -144,7 +144,7 @@ const breadcrumbLd = {
         Stock control that speaks {trade.navLabel.toLowerCase()}.
       </h2>
       <p class="mt-4 text-ink-600 leading-relaxed">
-        {trade.name} is the Stock4 platform tuned for {trade.navLabel.toLowerCase()} firms — the same
+        {trade.name} is the Stock4 platform tuned for {trade.navLabel.toLowerCase()} firms - the same
         stock takes, ordering, supplier pricing and van control that run the whole business, wearing
         your trade’s name and colours. Your team downloads the {trade.trade} app; managers run it all
         from the web portal.

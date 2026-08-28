@@ -4,7 +4,7 @@
   /* Brand · Stock4 master (slate) --------------------------------- */
   /* The master brand is deliberately neutral so it reads as the platform,
      not one trade. Each trade (glazing/building/plumbing/electrics) supplies
-     its own vivid accent — applied inline from data/site.ts. Seeds mirror the
+     its own vivid accent - applied inline from data/site.ts. Seeds mirror the
      stock brand registry (packages/core/src/theme/brands.ts: stock4 = slate). */
   --color-brand-50:  #f8fafc;
   --color-brand-100: #f1f5f9;
@@ -31,7 +31,7 @@
   --color-ink-900: #18181b;
   --color-ink-950: #09090b;
 
-  /* Trade accents — one per app. Also declared inline in data/site.ts so
+  /* Trade accents - one per app. Also declared inline in data/site.ts so
      cards and per-trade sections can theme themselves dynamically. */
   --color-glazing:   #0369a1; /* sky */
   --color-building:  #c2410c; /* orange */
@@ -51,7 +51,7 @@ body {
   font-feature-settings: "ss01", "cv11";
 }
 
-/* Display headings — tighter tracking, optical sizing ----------- */
+/* Display headings - tighter tracking, optical sizing ----------- */
 .display {
   letter-spacing: -0.035em;
   line-height: 0.98;

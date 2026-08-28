@@ -1,5 +1,5 @@
 // Rasterises the Stock4 social share image (1200×630) to public/og-default.png.
-// Run with `npm run og:build`. Kept deliberately simple — one SVG, one output.
+// Run with `npm run og:build`. Kept deliberately simple - one SVG, one output.
 import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
@@ -7,7 +7,7 @@ import { dirname, resolve } from 'node:path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const out = resolve(__dirname, '../public/og-default.png');
 
-// Trade accent swatches — the four apps, in brand order.
+// Trade accent swatches - the four apps, in brand order.
 const trades = [
   { label: 'Glazing', c: '#0369a1' },
   { label: 'Building', c: '#c2410c' },
@@ -47,7 +47,7 @@ const svg = `
   </g>
 
   <text x="80" y="270" font-family="Geist, Inter, Arial, sans-serif" font-size="72" font-weight="700" fill="#ffffff" letter-spacing="-2">Stock takes, ordering</text>
-  <text x="80" y="352" font-family="Geist, Inter, Arial, sans-serif" font-size="72" font-weight="700" fill="#ffffff" letter-spacing="-2">and stock control —</text>
+  <text x="80" y="352" font-family="Geist, Inter, Arial, sans-serif" font-size="72" font-weight="700" fill="#ffffff" letter-spacing="-2">and stock control -</text>
   <text x="80" y="434" font-family="Geist, Inter, Arial, sans-serif" font-size="72" font-weight="700" fill="#60a5fa" letter-spacing="-2">in one place.</text>
 
   ${chips}

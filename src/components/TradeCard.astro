@@ -5,7 +5,7 @@ const { trade } = Astro.props;
 ---
 
 <a
-  href={trade.webUrl}
+  href={`/${trade.slug}/`}
   class="group relative flex flex-col overflow-hidden rounded-2xl border border-ink-200 bg-white transition-all hover:-translate-y-0.5 hover:shadow-xl"
   style={`--hero-from: ${trade.heroFrom}; --hero-to: ${trade.heroTo}; --on-accent: ${trade.onAccent}; --accent-text: ${trade.accentText}`}
 >
@@ -39,7 +39,7 @@ const { trade } = Astro.props;
       class="mt-4 inline-flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all"
       style="color: var(--accent-text)"
     >
-      Open {trade.trade} app &rarr;
+      Explore {trade.trade} &rarr;
     </span>
   </div>
 </a>

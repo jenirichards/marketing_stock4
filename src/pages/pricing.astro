@@ -3,9 +3,9 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { site, plans, pricingNote, faqs } from '../data/site';
 
-const title = `Pricing — ${site.name}`;
+const title = `Pricing - ${site.name}`;
 const description =
-  'Stock4 pricing: a one-off setup fee plus a monthly company subscription and a small per-user charge. Every plan includes the full feature set on web and mobile. Indicative pricing — contact us for a tailored quote.';
+  'Stock4 pricing: a one-off setup fee plus a monthly company subscription and a small per-user charge. Every plan includes the full feature set on web and mobile. Indicative pricing - contact us for a tailored quote.';
 
 // Re-use the two pricing-related FAQs at the foot of the page.
 const pricingFaqs = faqs.filter((f) => /cost|started|choose|one app/i.test(f.q));
@@ -20,7 +20,7 @@ const pricingFaqs = faqs.filter((f) => /cost|started|choose|one app/i.test(f.q))
         Simple pricing, the whole feature set.
       </h1>
       <p class="mt-5 max-w-2xl text-lg text-ink-600 leading-relaxed">
-        One company subscription covers your trade app on web and mobile — every feature included.
+        One company subscription covers your trade app on web and mobile - every feature included.
         You pay a one-off setup fee to get your suppliers and stock loaded, then a monthly fee plus
         a small charge per user as your team grows.
       </p>

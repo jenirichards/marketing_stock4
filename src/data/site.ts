@@ -17,7 +17,7 @@ export const site = {
   url: 'https://stock4.co.uk',
 };
 
-/** Icon names — each must exist in components/Icon.astro (vendored PrimeIcons,
+/** Icon names - each must exist in components/Icon.astro (vendored PrimeIcons,
  *  the same icon set used throughout the Stock4 app). */
 export type IconName =
   | 'home'
@@ -58,9 +58,9 @@ export type Trade = {
   navLabel: string;
   /** Primary brand colour (from brands.ts colors.primary). Used for swatches. */
   accent: string;
-  /** Darker shade (from brands.ts colors.primaryDark) — pressed states, deep fills. */
+  /** Darker shade (from brands.ts colors.primaryDark) - pressed states, deep fills. */
   accentDark: string;
-  /** Text colour that sits legibly ON the accent fill — mirrors the app's
+  /** Text colour that sits legibly ON the accent fill - mirrors the app's
    *  onColor() rule: dark ink for the light gold brand, white otherwise. */
   onAccent: string;
   /** Accent used AS text on a white background. Falls back to accentDark for the
@@ -105,7 +105,7 @@ export const trades: Trade[] = [
     appStore: 'https://apps.apple.com/gb/app/stock4-glazing/id6782316730',
     playStore: 'https://play.google.com/store/apps/details?id=com.icentric.stock4glazing',
     blurb:
-      'Track glass, units, hardware and sundries from the workshop to the van — stock takes, reorders and supplier pricing in one place.',
+      'Track glass, units, hardware and sundries from the workshop to the van - stock takes, reorders and supplier pricing in one place.',
     logo: '/logos/stock4glazing-logo.svg',
     icon: '/logos/stock4glazing-icon.png',
   },
@@ -123,8 +123,10 @@ export const trades: Trade[] = [
     heroTo: '#431407',
     webUrl: 'https://building.stock4.co.uk',
     appId: 'com.icentric.stock4building',
+    appStore: 'https://apps.apple.com/gb/app/stock4-building/id6800339924',
+    playStore: 'https://play.google.com/store/apps/details?id=com.icentric.stock4building',
     blurb:
-      'Keep materials, fixings and plant under control across sites and stores — count what you have, order what you need, know what it costs.',
+      'Keep materials, fixings and plant under control across sites and stores - count what you have, order what you need, know what it costs.',
     logo: '/logos/stock4building-logo.svg',
     icon: '/logos/stock4building-icon.png',
   },
@@ -143,7 +145,7 @@ export const trades: Trade[] = [
     webUrl: 'https://plumbing.stock4.co.uk',
     appId: 'com.icentric.stock4plumbing',
     blurb:
-      'Pipe, fittings, boilers and consumables — track van stock and workshop shelves, and reorder from the merchant before you run dry.',
+      'Pipe, fittings, boilers and consumables - track van stock and workshop shelves, and reorder from the merchant before you run dry.',
     logo: '/logos/stock4plumbing-logo.svg',
     icon: '/logos/stock4plumbing-icon.png',
   },
@@ -162,7 +164,7 @@ export const trades: Trade[] = [
     webUrl: 'https://electrics.stock4.co.uk',
     appId: 'com.icentric.stock4electrics',
     blurb:
-      'Cable, containment, accessories and test gear — stock takes on the floor and in the van, with supplier prices compared side by side.',
+      'Cable, containment, accessories and test gear - stock takes on the floor and in the van, with supplier prices compared side by side.',
     logo: '/logos/stock4electrics-logo.svg',
     icon: '/logos/stock4electrics-icon.png',
   },
@@ -187,14 +189,14 @@ export const nav: NavItem[] = [
 
 export type Feature = { icon: IconName; title: string; body: string };
 
-/** The full feature grid — mirrors the app's own capabilities (ice/workflow
+/** The full feature grid - mirrors the app's own capabilities (ice/workflow
  *  apps/web menu + component set). */
 export const features: Feature[] = [
   {
     icon: 'qrcode',
     title: 'Stock takes, done in minutes',
     body:
-      'Count stock by scanning a barcode or with simple quantity entry — on the warehouse floor, at the workshop shelf, or out in the van. No paper sheets, no re-keying later.',
+      'Count stock by scanning a barcode or with simple quantity entry - on the warehouse floor, at the workshop shelf, or out in the van. No paper sheets, no re-keying later.',
   },
   {
     icon: 'box',
@@ -224,7 +226,7 @@ export const features: Feature[] = [
     icon: 'send',
     title: 'Stock requests between sites',
     body:
-      'Staff request stock from a central store or another site, and you track each request from raised to picked to ready — no lost texts or scribbled lists.',
+      'Staff request stock from a central store or another site, and you track each request from raised to picked to ready - no lost texts or scribbled lists.',
   },
   {
     icon: 'truck',
@@ -242,13 +244,13 @@ export const features: Feature[] = [
     icon: 'chart-bar',
     title: 'Dashboard & reports',
     body:
-      'A live dashboard of stock, orders and pricing, plus a company-wide activity log — so managers can see what changed, when, and by whom.',
+      'A live dashboard of stock, orders and pricing, plus a company-wide activity log - so managers can see what changed, when, and by whom.',
   },
   {
     icon: 'shield',
     title: 'Users, roles & access',
     body:
-      'Invite your team with the right access level — staff, manager or admin — so people see what they need and sensitive settings stay locked down.',
+      'Invite your team with the right access level - staff, manager or admin - so people see what they need and sensitive settings stay locked down.',
   },
   {
     icon: 'bell',
@@ -271,7 +273,7 @@ export const steps: { n: string; icon: IconName; title: string; body: string }[]
     icon: 'qrcode',
     title: 'Count it',
     body:
-      'Run a stock take by barcode or quick entry — on the floor, at the shelf, or in the van.',
+      'Run a stock take by barcode or quick entry - on the floor, at the shelf, or in the van.',
   },
   {
     n: '02',
@@ -290,7 +292,7 @@ export const steps: { n: string; icon: IconName; title: string; body: string }[]
 ];
 
 /** Pricing tiers. Priced per company; every tier includes the whole feature
- *  set — bigger tiers add users, sites and support. Figures are indicative and
+ *  set - bigger tiers add users, sites and support. Figures are indicative and
  *  flagged as such on the page. */
 export type Plan = {
   name: string;
@@ -335,13 +337,13 @@ export const plans: Plan[] = [
 ];
 
 export const pricingNote =
-  'Prices are indicative and exclude VAT. Final pricing depends on your team size, sites and the trade app you need — contact us for a tailored quote.';
+  'Prices are indicative and exclude VAT. Final pricing depends on your team size, sites and the trade app you need - contact us for a tailored quote.';
 
-/** FAQ — doubles as long-tail SEO content + FAQPage structured data. */
+/** FAQ - doubles as long-tail SEO content + FAQPage structured data. */
 export const faqs: { q: string; a: string }[] = [
   {
     q: 'Which app should I choose?',
-    a: 'Pick the one that matches your trade — Glazing, Building, Plumbing or Electrics. The feature set is the same across all four; the difference is the branding and the wording tuned to how each trade works. If you span more than one trade, get in touch and we will point you to the right fit.',
+    a: 'Pick the one that matches your trade - Glazing, Building, Plumbing or Electrics. The feature set is the same across all four; the difference is the branding and the wording tuned to how each trade works. If you span more than one trade, get in touch and we will point you to the right fit.',
   },
   {
     q: 'Is there a mobile app as well as the web portal?',
