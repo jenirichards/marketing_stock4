@@ -1,0 +1,49 @@
+---
+// The official Apple and Google download badges, used as artwork.
+//
+// Both companies' brand guidelines require their supplied badge and forbid
+// recreating it: no retyping "Download on the App Store" into your own button,
+// no altering the lockup, no substituting the wording. These SVGs are the same
+// files used across the estate (marketing/fitness, harbourSwIce, beat, the email
+// assets in ice/server-push) - keep them byte-identical rather than re-exporting.
+//
+// Apple's badge is 119.66x40 and Google's is 238.96x70.87. Google's includes
+// noticeably more internal padding, so matching them on raw height leaves the
+// Apple one looking oversized - the Google badge is rendered ~15% taller here so
+// the two read as the same size, which is what both sets of guidelines are
+// actually asking for.
+interface Props {
+  appStore?: string;
+  playStore?: string;
+  /** Visual height of the Apple badge in px; Google scales from it. */
+  height?: number;
+  class?: string;
+}
+const { appStore, playStore, height = 40, class: klass = '' } = Astro.props;
+const playHeight = Math.round(height * 1.15);
+---
+
+{(appStore || playStore) && (
+  <div class={`flex flex-wrap items-center gap-3 ${klass}`}>
+    {appStore && (
+      <a href={appStore} target="_blank" rel="noopener" class="inline-block transition-opacity hover:opacity-85">
+        <img
+          src="/badges/app-store-badge.svg"
+          alt="Download on the App Store"
+          height={height}
+          style={`height:${height}px;width:auto`}
+        />
+      </a>
+    )}
+    {playStore && (
+      <a href={playStore} target="_blank" rel="noopener" class="inline-block transition-opacity hover:opacity-85">
+        <img
+          src="/badges/google-play-badge.svg"
+          alt="Get it on Google Play"
+          height={playHeight}
+          style={`height:${playHeight}px;width:auto`}
+        />
+      </a>
+    )}
+  </div>
+)}
