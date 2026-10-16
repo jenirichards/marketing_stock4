@@ -14,6 +14,13 @@ import { gaMeasurementId } from '../data/site';
 // on harbour-sw.co.uk cannot be read by stock4.co.uk anyway; naming the key after the
 // site keeps that honest and stops a shared name implying otherwise.
 //
+// Yellow, and deliberately loud. The first version was a white bar with a thin
+// grey rule, which read as page chrome rather than a question and was easy to
+// miss entirely - and a banner nobody notices is a consent banner that does not
+// work. The buttons are neutral dark rather than each site's brand colour:
+// across five brands a coloured button on yellow clashes somewhere, and the
+// Harbour Fitness accent is itself amber.
+//
 // Strictly-necessary cookies are not covered by this and are not set here:
 // this site has no sign-in and sets nothing of its own.
 const STORAGE_KEY = 'stock4_consent_v1';
@@ -22,29 +29,29 @@ const STORAGE_KEY = 'stock4_consent_v1';
 <div
   id="consent-banner"
   hidden
-  class="fixed inset-x-0 bottom-0 z-50 border-t border-ink-200 bg-white/95 backdrop-blur"
+  class="fixed inset-x-0 bottom-0 z-50 border-t-2 border-amber-500 bg-amber-300 text-ink-900 shadow-[0_-6px_24px_rgba(0,0,0,0.18)]"
   role="dialog"
   aria-live="polite"
   aria-label="Cookie choices"
 >
   <div class="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-5 sm:px-6 lg:px-8 md:flex-row md:items-center md:justify-between">
-    <p class="m-0 text-sm text-ink-600">
-      We would like to use Google Analytics to count visits and see which pages
-      are useful. Nothing is loaded unless you say yes, and we do not use it to
-      identify you.
+    <p class="m-0 max-w-3xl text-sm text-ink-900">
+      We use cookies to enhance your user experience, count visits and see which
+      pages are useful. We use this information to update and improve our website
+      and the information we present. We do not use it to identify you in any way.
     </p>
     <div class="flex shrink-0 gap-3">
       <button
         type="button"
         data-consent="rejected"
-        class="rounded-lg border border-ink-300 px-4 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-ink-50"
+        class="rounded-lg border border-ink-900/35 px-4 py-2 text-sm font-medium text-ink-900 transition-colors hover:bg-ink-900/10"
       >
         No thanks
       </button>
       <button
         type="button"
         data-consent="accepted"
-        class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-700"
+        class="rounded-lg bg-ink-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-ink-800"
       >
         Accept
       </button>
