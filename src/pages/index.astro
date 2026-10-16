@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import TradeCard from '../components/TradeCard.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import Icon from '../components/Icon.astro';
-import { site, trades, features, steps, faqs } from '../data/site';
+import { site, trades, features, steps, faqs, plans } from '../data/site';
 
 const title = `${site.name} - ${site.tagline}`;
 const description =
@@ -22,6 +22,13 @@ const faqLd = {
   })),
 };
 
+// The lowest advertised monthly, as a bare number for schema.org.
+const entryMonthly = plans
+  .map((p) => Number(p.monthly.replace(/[^0-9.]/g, '')))
+  .filter((n) => Number.isFinite(n) && n > 0)
+  .sort((a, b) => a - b)[0]
+  .toString();
+
 const productLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -37,9 +44,13 @@ const productLd = {
   },
   offers: {
     '@type': 'Offer',
-    price: '39',
+    // Taken from the cheapest plan rather than typed again. This block had
+    // kept the old £39 Starter price after the plans were revised, which put a
+    // figure £110 under the pricing page into the structured data search
+    // engines read. Deriving it means the next revision cannot leave it behind.
+    price: entryMonthly,
     priceCurrency: 'GBP',
-    description: 'Company subscription from £39/month plus a one-off setup fee.',
+    description: `Company subscription from \u00a3${entryMonthly}/month plus a one-off setup fee.`,
   },
 };
 ---
