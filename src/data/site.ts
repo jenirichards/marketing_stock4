@@ -311,26 +311,26 @@ export const plans: Plan[] = [
     users: 'Up to 5 users',
     blurb: 'For a single workshop, store or small team getting stock under control.',
     setup: '£299',
-    monthly: '£39',
+    monthly: '£149',
     perUser: '£4',
     points: ['One trade app, web + mobile', 'Barcode & quick-entry stock takes', 'Ordering and supplier pricing', 'Email support'],
   },
   {
     name: 'Team',
-    users: 'Up to 20 users',
+    users: 'Up to 10 users',
     blurb: 'For an established firm running multiple vans and a central store.',
     setup: '£499',
-    monthly: '£89',
+    monthly: '£249',
     perUser: '£3.50',
     highlight: true,
     points: ['Everything in Starter', 'Van stock lists & van checks', 'Stock requests between sites', 'Price history & reporting', 'Priority support'],
   },
   {
     name: 'Multi-site',
-    users: '20+ users',
+    users: '10+ users',
     blurb: 'For larger operators across several sites, stores and depots.',
     setup: 'From £999',
-    monthly: 'From £149',
+    monthly: '£409',
     perUser: '£3',
     points: ['Everything in Team', 'Multiple sites & stores', 'Tool & asset loan tracking', 'Custom roles & notifications', 'Onboarding & account manager'],
   },
@@ -362,3 +362,6 @@ export const faqs: { q: string; a: string }[] = [
     a: 'Get in touch and we will set up your company account, load your suppliers and stock, and get your team onto the web portal and the mobile app. Most firms are running their first stock take within days.',
   },
 ];
+
+/** GA4 web stream for stock4.co.uk. Loaded only after consent. */
+export const gaMeasurementId = 'G-XW39YQ4MHK';
