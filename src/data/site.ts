@@ -144,6 +144,8 @@ export const trades: Trade[] = [
     heroTo: '#042f2b',
     webUrl: 'https://plumbing.stock4.co.uk',
     appId: 'com.icentric.stock4plumbing',
+    appStore: 'https://apps.apple.com/gb/app/stock4-plumbing/id6800716532',
+    playStore: 'https://play.google.com/store/apps/details?id=com.icentric.stock4plumbing',
     blurb:
       'Pipe, fittings, boilers and consumables - track van stock and workshop shelves, and reorder from the merchant before you run dry.',
     logo: '/logos/stock4plumbing-logo.svg',
@@ -163,6 +165,8 @@ export const trades: Trade[] = [
     heroTo: '#d89b0a',
     webUrl: 'https://electrics.stock4.co.uk',
     appId: 'com.icentric.stock4electrics',
+    appStore: 'https://apps.apple.com/gb/app/stock4-electrics/id6800728932',
+    playStore: 'https://play.google.com/store/apps/details?id=com.icentric.stock4electrics',
     blurb:
       'Cable, containment, accessories and test gear - stock takes on the floor and in the van, with supplier prices compared side by side.',
     logo: '/logos/stock4electrics-logo.svg',
@@ -343,7 +347,7 @@ export const pricingNote =
 export const faqs: { q: string; a: string }[] = [
   {
     q: 'Which app should I choose?',
-    a: 'Pick the one that matches your trade - Glazing, Building, Plumbing or Electrics. The feature set is the same across all four; the difference is the branding and the wording tuned to how each trade works. If you span more than one trade, get in touch and we will point you to the right fit.',
+    a: 'Pick the one that matches your trade - Glazing, Building, Plumbing or Electrics. Each is its own app, with its own name and wording, and each one is developed with the firms in its trade. If you span more than one trade, get in touch and we will point you to the right fit.',
   },
   {
     q: 'Is there a mobile app as well as the web portal?',
