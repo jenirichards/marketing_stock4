@@ -302,7 +302,6 @@ export type Plan = {
   name: string;
   users: string;
   blurb: string;
-  setup: string;
   monthly: string;
   perUser: string;
   highlight?: boolean;
@@ -314,7 +313,6 @@ export const plans: Plan[] = [
     name: 'Starter',
     users: 'Up to 5 users',
     blurb: 'For a single workshop, store or small team getting stock under control.',
-    setup: '£299',
     monthly: '£149',
     perUser: '£4',
     points: ['One trade app, web + mobile', 'Barcode & quick-entry stock takes', 'Ordering and supplier pricing', 'Email support'],
@@ -323,7 +321,6 @@ export const plans: Plan[] = [
     name: 'Team',
     users: 'Up to 10 users',
     blurb: 'For an established firm running multiple vans and a central store.',
-    setup: '£499',
     monthly: '£249',
     perUser: '£3.50',
     highlight: true,
@@ -333,7 +330,6 @@ export const plans: Plan[] = [
     name: 'Multi-site',
     users: '10+ users',
     blurb: 'For larger operators across several sites, stores and depots.',
-    setup: 'From £999',
     monthly: '£409',
     perUser: '£3',
     points: ['Everything in Team', 'Multiple sites & stores', 'Tool & asset loan tracking', 'Custom roles & notifications', 'Onboarding & account manager'],
